@@ -7,6 +7,9 @@
     "scripts": {
         "test": "make test"
     },
+    "jest": {
+        "testPathIgnorePatterns": ["build"]
+    },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/codeninja-ru/datefm.git"
