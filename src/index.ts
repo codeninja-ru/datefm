@@ -69,8 +69,8 @@ export function dddd(date: Date) : string {
     return DAYS_OF_WEEK[date.getDay() - 1];
 }
 
-export { default as d } from './d';
-export { default as dd } from './dd';
+export { default as D } from './d_';
+export { default as DD } from './dd_';
 export { default as m } from './m';
 export { default as mm } from './mm';
 export { default as yy } from './yy';
@@ -83,3 +83,5 @@ export { default as M } from './m_';
 export { default as MM } from './mm_';
 export { default as s } from './s';
 export { default as ss } from './ss';
+export { default as SSS } from './sss_';
+export { default as d } from './d';

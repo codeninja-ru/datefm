@@ -1,8 +1,8 @@
-import { datefm, mm } from 'datefm';
+import { datefm, MM } from 'datefm';
 
-describe('mm', () => {
+describe('MM', () => {
     test('format month (leading zero)', () => {
-        const formatter = datefm`${mm}`;
+        const formatter = datefm`${MM}`;
         expect(formatter(new Date('01/10/2021 10:10:10 UTC'))).toEqual('01');
         expect(formatter(new Date('11/10/2021 10:10:10 UTC'))).toEqual('11');
         expect(formatter(new Date('12/10/2021 10:10:10 UTC'))).toEqual('12');

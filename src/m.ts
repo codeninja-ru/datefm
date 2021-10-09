@@ -1,6 +1,6 @@
 /**
  * Minutes, no leading zero
  */
-export default function M(date: Date) : string {
+export default function m(date: Date) : string {
     return date.getMinutes() + '';
 }

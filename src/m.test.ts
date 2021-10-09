@@ -1,8 +1,8 @@
-import { datefm, M } from 'datefm';
+import { datefm, m } from 'datefm';
 
-describe('M (minutes)', () => {
+describe('m (minutes)', () => {
     test('format minutes', () => {
-        const formatter = datefm`${M}`;
+        const formatter = datefm`${m}`;
         expect(formatter(new Date('11/10/2021 10:11:12'))).toEqual('11');
         expect(formatter(new Date('11/10/2021 10:00:12'))).toEqual('0');
         expect(formatter(new Date('11/10/2021 10:01:12'))).toEqual('1');
