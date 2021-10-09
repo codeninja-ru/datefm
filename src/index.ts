@@ -84,4 +84,4 @@ export { default as MM } from './mm_';
 export { default as s } from './s';
 export { default as ss } from './ss';
 export { default as SSS } from './sss_';
-export { default as d } from './d';
+export { default as c } from './c';
