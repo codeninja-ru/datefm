@@ -1,10 +1,6 @@
 /**
- * Hours; no leading zero for single-digit hours (12-hour clock).
+ * Hours; no leading zero for single-digit hours (12-hour clock). [1-12]
  */
 export default function h(date : Date) : string {
-    var ht = date.getHours();
-    if (ht == 0) {
-        return '0';
-    }
-    return (ht % 12 || 12) + '';
+    return (date.getHours() % 12 || 12) + '';
 }

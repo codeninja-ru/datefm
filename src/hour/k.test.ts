@@ -1,8 +1,8 @@
-import { datefm, H } from 'datefm';
+import { datefm, k } from 'datefm';
 
-describe('H', () => {
+describe('k', () => {
     test('format hours; no leading zero, 24-hour clock', () => {
-        const formatter = datefm`${H}`;
+        const formatter = datefm`${k}`;
         expect(formatter(new Date('11/10/2021 10:11:12'))).toEqual('10');
         expect(formatter(new Date('11/10/2021 09:11:12'))).toEqual('9');
         expect(formatter(new Date('11/10/2021 01:11:12'))).toEqual('1');
@@ -12,7 +12,7 @@ describe('H', () => {
         expect(formatter(new Date('11/10/2021 12:11:12'))).toEqual('12');
         expect(formatter(new Date('11/10/2021 16:11:12'))).toEqual('16');
         expect(formatter(new Date('11/10/2021 23:11:12'))).toEqual('23');
-        expect(formatter(new Date('11/10/2021 00:11:12'))).toEqual('0');
+        expect(formatter(new Date('11/10/2021 00:11:12'))).toEqual('24');
     });
 
 });
