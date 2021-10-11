@@ -69,19 +69,19 @@ export function dddd(date: Date) : string {
     return DAYS_OF_WEEK[date.getDay() - 1];
 }
 
-export { default as D } from './d_';
-export { default as DD } from './dd_';
-export { default as m } from './m';
-export { default as mm } from './mm';
-export { default as yy } from './yy';
-export { default as yyyy } from './yyyy';
-export { default as h } from './h';
-export { default as hh } from './hh';
-export { default as H } from './h24';
-export { default as HH } from './hh24';
-export { default as M } from './m_';
-export { default as MM } from './mm_';
-export { default as s } from './s';
-export { default as ss } from './ss';
-export { default as SSS } from './sss_';
-export { default as c } from './c';
+export { default as D } from './day/d_';
+export { default as DD } from './day/dd_';
+export { default as m } from './minute/m';
+export { default as mm } from './minute/mm';
+export { default as yy } from './year/yy';
+export { default as yyyy } from './year/yyyy';
+export { default as h } from './hour/h';
+export { default as hh } from './hour/hh';
+export { default as H } from './hour/h24';
+export { default as HH } from './hour/hh24';
+export { default as M } from './month/m_';
+export { default as MM } from './month/mm_';
+export { default as s } from './second/s';
+export { default as ss } from './second/ss';
+export { default as SSS } from './millisecond/sss_';
+export { default as c } from './week_day/c';
