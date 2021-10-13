@@ -1,7 +1,7 @@
 type Formatter = (date: Date) => string;
 
 /**
- * @example var formatFunction = datefm`${dd}-${mm}-${YYY}`;
+ * @example var formatFunction = datefm`${DD}-${MM}-${YYY}`;
  * console.log(formatFunction(new Date()));
  */
 export function datefm(strings : TemplateStringsArray, ...formatters : Array<Formatter>) : Formatter {
@@ -15,35 +15,6 @@ export function datefm(strings : TemplateStringsArray, ...formatters : Array<For
         return result;
     };
 }
-
-const MONTHS = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-]
-const MONTHS_SHORT = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-];
 
 export { default as D } from './day/d_';
 export { default as DD } from './day/dd_';
@@ -59,10 +30,10 @@ export { default as K } from './hour/k_';
 export { default as KK } from './hour/kk_';
 export { default as k } from './hour/k';
 export { default as kk } from './hour/kk';
-export { default as M } from './month/m_';
-export { default as MM } from './month/mm_';
 export { default as s } from './second/s';
 export { default as ss } from './second/ss';
 export { default as SSS } from './millisecond/sss_';
 export { default as c } from './week_day/c';
 export { default as cc } from './week_day/cc';
+export * from './week_day';
+export * from './month';
