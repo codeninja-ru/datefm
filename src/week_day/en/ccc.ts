@@ -1,17 +1,9 @@
-const DAYS_OF_WEEK_SHORT = [
-    "Sun",
-    "Mon",
-    "Tue",
-    "Wed",
-    "Thu",
-    "Fri",
-    "Sat",
-];
-
+const DAYS_OF_WEEK = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 /**
- * Abbreviated day of week, English language
- * @example Sun, Mon, Tue, Web, Thu...
+ * Abbreviated day of week. Stand-Along (in nominative case)
+ * @lang English
+ * @example Sun, Mon, Tue, Wed...
  */
 export default function ccc(date: Date) : string {
-    return DAYS_OF_WEEK_SHORT[date.getDay()];
+    return DAYS_OF_WEEK[date.getDay()];
 }

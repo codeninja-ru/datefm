@@ -1,11 +1,12 @@
 #!/usr/bin/env node
+/**
+ * generates index.ts for each folder and sub-folders
+ * */
 
 const fs = require('fs');
 const path = require('path');
 
 const SRC_DIR = path.join(__dirname, '../src');
-const MONTH_DIR = path.join(SRC_DIR, 'month');
-const WEEK_DAY_DIR = path.join(SRC_DIR, 'week_day');
 
 function getExportAsName(filename) {
     const name = path.parse(filename).name;

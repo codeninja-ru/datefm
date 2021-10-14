@@ -11,3 +11,8 @@ test: build
 
 index:
 	node ./tools/gen.js
+
+locales:
+	node ./tools/gen_locales.js
+
+gen: locales index
