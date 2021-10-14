@@ -1,1 +1,1 @@
-export { default as en_LLLL } from './mmmm_';
+export { default } from './mmmm_';

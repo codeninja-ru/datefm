@@ -8,3 +8,6 @@ build: clean
 
 test: build
 	./node_modules/jest/bin/jest.js
+
+index:
+	node ./tools/gen.js

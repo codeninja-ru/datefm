@@ -1,1 +1,1 @@
-export { default as L } from './m_';
+export { default } from './m_';
