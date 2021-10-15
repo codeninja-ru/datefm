@@ -1,3 +1,4 @@
+// auto-generated, DO NOT EDIT, see tools/gen_locales.js
 import { datefm } from 'datefm';
 import ccc from 'datefm/week_day/en/ccc';
 

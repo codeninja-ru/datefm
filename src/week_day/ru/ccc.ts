@@ -1,3 +1,4 @@
+// auto-generated, DO NOT EDIT, see tools/gen_locales.js
 const DAYS_OF_WEEK = ['Вск', 'Пон', 'Вт', 'Ср', 'Чт', 'Птн', 'Сб'];
 /**
  * Abbreviated day of week. Stand-Along (in nominative case)

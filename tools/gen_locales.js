@@ -32,7 +32,7 @@ function getFileName(name) {
 function weekDayTemplate(array, lang, desc, name) {
     return {
         source: function() {
-            return `// auto-generated, DO NOT EDIT, see tools/${__filename}
+            return `// auto-generated, DO NOT EDIT, see tools/${path.basename(__filename)}
 const DAYS_OF_WEEK = [${array.map(item => `'${item}'`).join(', ')}];
 /**
  * ${desc}
@@ -50,7 +50,7 @@ export default function ${name}(date: Date) : string {
                   .map((x, y) =>  3 + y)
                   .map(num => num < 10 ? '0' + num : num)
                   .map(day => `expect(formatter(new Date('10/${day}/2021 10:10:10 UTC'))).toEqual('${array[(day - 3) % 7]}');`);
-            return `// auto-generated, DO NOT EDIT, see tools/${__filename}
+            return `// auto-generated, DO NOT EDIT, see tools/${path.basename(__filename)}
 import { datefm } from 'datefm';
 import ${name} from 'datefm/week_day/${lang}/${name}';
 
@@ -84,7 +84,7 @@ function monthTemplate(array, lang, desc, name) {
             return getFileName(name);
         },
         source: function() {
-            return `// auto-generated, DO NOT EDIT, see tools/${__filename}
+            return `// auto-generated, DO NOT EDIT, see tools/${path.basename(__filename)}
 const MONTHS = [${array.map(item => `'${item}'`).join(', ')}];
 
 /**
@@ -100,12 +100,12 @@ export default function ${name}(date: Date) : string {
         test: function() {
             const items = array
                   .map((value, key) => {
-                      return `            expect(formatter(new Date('${pad2(key)}/10/2021 10:10:10 UTC'))).toEqual('${value}');`;
+                      return `        expect(formatter(new Date('${pad2(key + 1)}/10/2021 10:10:10 UTC'))).toEqual('${value}');`;
                   })
                   .join('\n');
-            return `// auto-generated, DO NOT EDIT, see tools/${__filename}
+            return `// auto-generated, DO NOT EDIT, see tools/${path.basename(__filename)}
 import { datefm } from 'datefm';
-import ${name} from 'datefm/month/{$lang}/${this.fileName()}';
+import ${name} from 'datefm/month/${lang}/${this.fileName()}';
 
 describe('${name} (${lang})', () => {
     test('format month', () => {
@@ -135,7 +135,7 @@ ${items}
 function copyOf(name, template) {
     return Object.assign({}, template, {
         source: function() {
-            return `// auto-generated, DO NOT EDIT, see tools/${__filename}
+            return `// auto-generated, DO NOT EDIT, see tools/${path.basename(__filename)}
 export { default } from './${getFileName(name)}';
 `;
         }

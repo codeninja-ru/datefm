@@ -1,23 +1,11 @@
-const MONTHS_SHORT = [
-    "янв.",
-    "февр.",
-    "мар.",
-    "апр.",
-    "мая",
-    "июня",
-    "июля",
-    "авг.",
-    "сент.",
-    "окт.",
-    "нояб.",
-    "дек."
-];
+// auto-generated, DO NOT EDIT, see tools/gen_locales.js
+const MONTHS = ['янв.', 'февр.', 'мар.', 'апр.', 'мая', 'июня', 'июля', 'авг.', 'сент.', 'окт.', 'нояб.', 'дек.'];
 
 /**
- * Name of month, Abbreveated. Russian
- * Month number/name, format style (intended to be used in conjunction with ‘d’ for day number).
- * @example янв, февр, мая, июня ...
+ * Name of month, (intended to be used in conjunction with ‘d’ for day number).
+ * @lang Russian
+ * @example янв., февр., мар., апр....
  * */
 export default function MMM(date: Date) : string {
-    return MONTHS_SHORT[date.getMonth()];
+    return MONTHS[date.getMonth()];
 }

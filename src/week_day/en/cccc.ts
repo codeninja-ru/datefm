@@ -1,3 +1,4 @@
+// auto-generated, DO NOT EDIT, see tools/gen_locales.js
 const DAYS_OF_WEEK = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 /**
  * Full day of week. Stand-Along (in nominative case)

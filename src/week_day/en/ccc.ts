@@ -1,3 +1,4 @@
+// auto-generated, DO NOT EDIT, see tools/gen_locales.js
 const DAYS_OF_WEEK = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 /**
  * Abbreviated day of week. Stand-Along (in nominative case)

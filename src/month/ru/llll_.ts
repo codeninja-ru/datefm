@@ -1,22 +1,10 @@
-const MONTHS = [
-    "январь",
-    "февраль",
-    "март",
-    "апрель",
-    "май",
-    "июнь",
-    "июль",
-    "август",
-    "сентябрь",
-    "октябрь",
-    "ноябрь",
-    "декабрь"
-];
+// auto-generated, DO NOT EDIT, see tools/gen_locales.js
+const MONTHS = ['январь', 'февраль', 'март', 'апрель', 'май', 'июнь', 'июль', 'август', 'сентябрь', 'октябрь', 'ноябрь', 'декабрь'];
 
 /**
- * Full name of month, Russian,
- * Stand-Alone Month number/name (intended to be used without ‘d’ for day number).
- * @example января, февраля, марта...
+ * Name of month, Abbreveated. Stand-Alone (intended to be used without ‘d’ for day number).
+ * @lang Russian
+ * @example январь, февраль, март, апрель...
  * */
 export default function LLLL(date: Date) : string {
     return MONTHS[date.getMonth()];

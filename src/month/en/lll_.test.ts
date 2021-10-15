@@ -1,10 +1,10 @@
 // auto-generated, DO NOT EDIT, see tools/gen_locales.js
 import { datefm } from 'datefm';
-import MMM from 'datefm/month/en/mmm_';
+import LLL from 'datefm/month/en/lll_';
 
-describe('MMM (en)', () => {
+describe('LLL (en)', () => {
     test('format month', () => {
-        const formatter = datefm`${MMM}`;
+        const formatter = datefm`${LLL}`;
         expect(formatter(new Date('01/10/2021 10:10:10 UTC'))).toEqual('Jan');
         expect(formatter(new Date('02/10/2021 10:10:10 UTC'))).toEqual('Feb');
         expect(formatter(new Date('03/10/2021 10:10:10 UTC'))).toEqual('Mar');
