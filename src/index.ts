@@ -16,25 +16,12 @@ export function datefm(strings : TemplateStringsArray, ...formatters : Array<For
     };
 }
 
-export { default as D } from './day/d_';
-export { default as DD } from './day/dd_';
-export { default as m } from './minute/m';
-export { default as mm } from './minute/mm';
-export { default as yy } from './year/yy';
-export { default as yyyy } from './year/yyyy';
-export { default as h } from './hour/h';
-export { default as hh } from './hour/hh';
-export { default as H } from './hour/h_';
-export { default as HH } from './hour/hh_';
-export { default as K } from './hour/k_';
-export { default as KK } from './hour/kk_';
-export { default as k } from './hour/k';
-export { default as kk } from './hour/kk';
-export { default as s } from './second/s';
-export { default as ss } from './second/ss';
-export { default as SSS } from './millisecond/sss_';
-export { default as c } from './week_day/c';
-export { default as cc } from './week_day/cc';
+export * from './day';
+export * from './year';
+export * from './hour';
+export * from './minute';
+export * from './second';
+export * from './millisecond';
 export * from './week_day';
 export * from './month';
 export * from './week';
