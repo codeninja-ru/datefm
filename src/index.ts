@@ -37,3 +37,4 @@ export { default as c } from './week_day/c';
 export { default as cc } from './week_day/cc';
 export * from './week_day';
 export * from './month';
+export * from './week';
