@@ -23,8 +23,6 @@ export default function ${fileName.name}(date: Date) : string {
     }
 
     test(vars) {
-        console.log(vars);
-
         const { array, lang, name, desc, fileName } = vars;
         const items = array
               .values()

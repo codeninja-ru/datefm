@@ -2,6 +2,7 @@ import path from 'path';
 import fs from 'fs';
 
 import { FileName } from './fileName.js';
+import { log } from 'util';
 
 export class WeekDayFormatter {
     constructor(vars, template) {
@@ -15,6 +16,8 @@ export class WeekDayFormatter {
         const test = this.template.test(this.vars);
 
         const langDir = fileName.dirName.joinLang(lang);
+        console.log(lang, langDir.path(), fileName.sourcePath(lang));
+
         if (!fs.existsSync(langDir.path())) {
             fs.mkdirSync(langDir.path());
         }

@@ -16,7 +16,7 @@ export class DirName {
     }
 
     filePath(fileName) {
-        return path.join(this.rootPath, fileName);
+        return path.join(this.rootPath, this.name, fileName);
     }
 
     join(name) {
@@ -28,8 +28,8 @@ export class DirName {
     }
 
     shortDirPath() {
-        const dir1 = path.basename(path.dirname(this.rootPath));
-        const dir2 = path.basename(this.rootPath);
+        const dir1 = path.basename(this.rootPath);
+        const dir2 = this.name;
         return path.join(dir1, dir2);
     }
 
