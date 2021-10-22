@@ -1,11 +1,18 @@
 #!/usr/bin/env node
 
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const SRC_DIR = path.join(__dirname, '../src');
 const MONTH_DIR = path.join(SRC_DIR, 'month');
 const WEEK_DAY_DIR = path.join(SRC_DIR, 'week_day');
+
+import { Vars, ConstArray, Lang, FileName, DirName } from './classes/index.js';
+import { WeekDayFormatter } from './classes/weekDayFormatter.js';
+import { WeekDayTemplate } from './templates/weekDay.js';
 
 const LANGS = {
     en: 'English',
@@ -19,14 +26,6 @@ const MONTH_FORMAT_DESC = 'Name of month, (intended to be used in conjunction wi
 
 function pad2(num) {
     return num < 10 ? '0' + num : num + '';
-}
-
-function getFileName(name) {
-    if (/[A-Z+]/.test(name)) {
-        return name.toLowerCase() + '_';
-    } else {
-        return name;
-    }
 }
 
 function weekDayTemplate(array, lang, desc, name) {
@@ -66,23 +65,22 @@ describe('${name} (${lang})', () => {
         writeFile: function() {
             const source = this.source();
             const test = this.test();
+            const fileName = new FileName(name);
 
             const langDir = path.join(WEEK_DAY_DIR, lang);
             if (!fs.existsSync(langDir)) {
                 fs.mkdirSync(langDir);
             }
-            console.log(`writing week_day/${lang}/{${name}.ts, ${name}_test.ts}`);
-            fs.writeFileSync(path.join(langDir, name + '.ts'), source);
-            fs.writeFileSync(path.join(langDir, name + '.test.ts'), test);
+            console.log(`writing week_day/${lang}/{${fileName.sourceName()}, ${fileName.testName()}}`);
+            fs.writeFileSync(fileName.sourcePath(langDir), source);
+            fs.writeFileSync(fileName.testPath(langDir), test);
         }
     };
 }
 
 function monthTemplate(array, lang, desc, name) {
+    const fileName = new FileName(name);
     return {
-        fileName: function() {
-            return getFileName(name);
-        },
         source: function() {
             return `// auto-generated, DO NOT EDIT, see tools/${path.basename(__filename)}
 const MONTHS = [${array.map(item => `'${item}'`).join(', ')}];
@@ -105,7 +103,7 @@ export default function ${name}(date: Date) : string {
                   .join('\n');
             return `// auto-generated, DO NOT EDIT, see tools/${path.basename(__filename)}
 import { datefm } from 'datefm';
-import ${name} from 'datefm/month/${lang}/${this.fileName()}';
+import ${name} from 'datefm/month/${lang}/${fileName.importName()}';
 
 describe('${name} (${lang})', () => {
     test('format month', () => {
@@ -124,19 +122,19 @@ ${items}
             if (!fs.existsSync(langDir)) {
                 fs.mkdirSync(langDir);
             }
-            const fileName = this.fileName();
-            console.log(`writing month/${lang}/{${fileName}.ts, ${fileName}.test.ts}`);
-            fs.writeFileSync(path.join(langDir, fileName + '.ts'), source);
-            fs.writeFileSync(path.join(langDir, fileName + '.test.ts'), test);
+            console.log(`writing month/${lang}/{${fileName.sourceName()}, ${fileName.testName()}}`);
+            fs.writeFileSync(fileName.sourcePath(langDir), source);
+            fs.writeFileSync(fileName.testPath(langDir), test);
         }
     };
 }
 
 function copyOf(name, template) {
+    const fileName = new FileName(name);
     return Object.assign({}, template, {
         source: function() {
             return `// auto-generated, DO NOT EDIT, see tools/${path.basename(__filename)}
-export { default } from './${getFileName(name)}';
+export { default } from './${fileName.importName()}';
 `;
         }
     });
@@ -145,13 +143,13 @@ export { default } from './${getFileName(name)}';
 const locales = {
     en: {
         week_day: {
-            standAlon: {
+            standAlone: {
                 short: weekDayTemplate(["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"], 'en', WEEK_DAY_CCC_DESC, 'ccc'),
                 full: weekDayTemplate(["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], 'en', WEEK_DAY_CCCC_DESC, 'cccc')
             },
         },
         month: {
-            standAlon: {
+            standAlone: {
                 short: monthTemplate(["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"], 'en', MONTH_STAND_ALONE_DESC, 'LLL'),
                 full: monthTemplate(["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"], 'en', MONTH_STAND_ALONE_DESC, 'LLLL'),
             },
@@ -163,13 +161,13 @@ const locales = {
     },
     ru: {
         week_day: {
-            standAlon: {
+            standAlone: {
                 short: weekDayTemplate(['Вск', 'Пон', 'Вт', 'Ср', 'Чт', 'Птн', 'Сб'], 'ru', WEEK_DAY_CCC_DESC, 'ccc'),
                 full: weekDayTemplate(['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'], 'ru', WEEK_DAY_CCCC_DESC, 'cccc')
             },
         },
         month: {
-            standAlon: {
+            standAlone: {
                 short: monthTemplate(["янв.", "февр.", "март", "апр.", "май", "июнь", "июль", "авг.", "сент.", "окт.", "нояб.", "дек."], 'ru', MONTH_STAND_ALONE_DESC, 'LLL'),
                 full: monthTemplate(["январь", "февраль", "март", "апрель", "май", "июнь", "июль", "август", "сентябрь", "октябрь", "ноябрь", "декабрь" ], 'ru', MONTH_STAND_ALONE_DESC, 'LLLL'),
             },
@@ -181,11 +179,24 @@ const locales = {
     }
 };
 
-Object.entries(locales).forEach(([key, value]) => {
-    value.week_day.standAlon.full.writeFile();
-    value.week_day.standAlon.short.writeFile();
-    value.month.standAlon.full.writeFile();
-    value.month.standAlon.short.writeFile();
-    value.month.format.full.writeFile();
-    value.month.format.short.writeFile();
-});
+//Object.entries(locales).forEach(([key, value]) => {
+//    value.week_day.standAlone.full.writeFile();
+//    value.week_day.standAlone.short.writeFile();
+//    value.month.standAlone.full.writeFile();
+//    value.month.standAlone.short.writeFile();
+//    value.month.format.full.writeFile();
+//    value.month.format.short.writeFile();
+//
+//});
+//
+
+const weekDayDirName = new DirName('week_day');
+
+const weekDay = new WeekDayFormatter(new Vars(
+    new FileName(weekDayDirName, 'ccc'),
+    new ConstArray(["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]),
+    new Lang('en'),
+    WEEK_DAY_CCC_DESC
+), new WeekDayTemplate());
+
+weekDay.write();
