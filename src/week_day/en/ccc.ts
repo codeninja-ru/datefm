@@ -1,4 +1,4 @@
-// auto-generated, DO NOT EDIT, see tools/weekDay.js
+// auto-generated, DO NOT EDIT, see tools/weekDayTemplate.js
 const MONTHS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
 /**

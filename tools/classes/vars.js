@@ -1,11 +1,9 @@
 import { FileName } from './fileName.js';
 
 export class Vars {
-    constructor(fileName, constArray, lang, desc) {
-        this.fileName = fileName;
+    constructor(constArray, lang, desc) {
         this.array = constArray;
         this.lang = lang;
         this.desc = desc;
-        this.name = fileName.name;
     }
 }

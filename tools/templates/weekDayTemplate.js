@@ -5,8 +5,8 @@ import { indent } from '../funcs/indent.js';
 import { pad2 } from '../funcs/pad2.js';
 
 export class WeekDayTemplate {
-    source(vars) {
-        const { array, lang, fileName, desc } = vars;
+    source(fileName, vars) {
+        const { array, lang, desc } = vars;
 
         return `// auto-generated, DO NOT EDIT, see tools/${path.basename(__filename)}
 const MONTHS = ${array.toJsArray()};
@@ -22,8 +22,8 @@ export default function ${fileName.name}(date: Date) : string {
 `;
     }
 
-    test(vars) {
-        const { array, lang, name, desc, fileName } = vars;
+    test(fileName, vars) {
+        const { array, lang, desc } = vars;
         const items = array
               .values()
               .map((value, key) => {
@@ -33,11 +33,11 @@ export default function ${fileName.name}(date: Date) : string {
               .join('\n');
         return `// auto-generated, DO NOT EDIT, see tools/${path.basename(__filename)}
 import { datefm } from 'datefm';
-import ${name} from 'datefm/month/${lang}/${fileName.importName()}';
+import ${fileName.name} from 'datefm/month/${lang}/${fileName.importName()}';
 
-describe('${name} (${lang})', () => {
+describe('${fileName.name} (${lang})', () => {
     test('format month', () => {
-        const formatter = datefm\`\$\{${name}\}\`;
+        const formatter = datefm\`\$\{${fileName.name}\}\`;
 ${items}
     });
 

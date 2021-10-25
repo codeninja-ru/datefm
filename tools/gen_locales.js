@@ -12,7 +12,7 @@ const WEEK_DAY_DIR = path.join(SRC_DIR, 'week_day');
 
 import { Vars, ConstArray, Lang, FileName, DirName } from './classes/index.js';
 import { WeekDayFormatter } from './classes/weekDayFormatter.js';
-import { WeekDayTemplate } from './templates/weekDay.js';
+import { WeekDayTemplate } from './templates/weekDayTemplate.js';
 
 const LANGS = {
     en: 'English',
@@ -192,11 +192,12 @@ const locales = {
 
 const weekDayDirName = new DirName('week_day');
 
-const weekDay = new WeekDayFormatter(new Vars(
-    new FileName(weekDayDirName, 'ccc'),
-    new ConstArray(["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]),
-    new Lang('en'),
-    WEEK_DAY_CCC_DESC
-), new WeekDayTemplate());
-
-weekDay.write();
+WeekDayFormatter
+    .make(
+        new Vars(
+            new ConstArray(["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]),
+            new Lang('en'),
+            WEEK_DAY_CCC_DESC
+        ),
+        new WeekDayTemplate()
+    ).write(new FileName(weekDayDirName, 'ccc'));
