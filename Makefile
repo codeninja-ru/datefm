@@ -7,7 +7,7 @@ build: clean
 	./node_modules/typescript/bin/tsc
 
 test: build
-	./node_modules/jest/bin/jest.js
+	node --experimental-vm-module ./node_modules/jest/bin/jest.js
 
 index:
 	node ./tools/gen.js

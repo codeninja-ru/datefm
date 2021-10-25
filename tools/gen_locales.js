@@ -201,3 +201,13 @@ WeekDayFormatter
         ),
         new WeekDayTemplate()
     ).write(new FileName(weekDayDirName, 'ccc'));
+
+WeekDayFormatter
+    .make(
+        new Vars(
+            new ConstArray(['Вск', 'Пон', 'Вт', 'Ср', 'Чт', 'Птн', 'Сб']),
+            new Lang('ru'),
+            WEEK_DAY_CCC_DESC
+        ),
+        new WeekDayTemplate()
+    ).write(new FileName(weekDayDirName, 'ccc'));
