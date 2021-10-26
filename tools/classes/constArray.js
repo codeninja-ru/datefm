@@ -15,9 +15,10 @@ export class ConstArray {
         return this.array.slice(0, 4).join(', ') + '...';
     }
 
-    isEqualTo(array) {
+    isEqual(array) {
         var a = this.array;
         var b = array;
+
         if (a === b) return true;
         if (a == null || b == null) return false;
         if (a.length !== b.length) return false;
