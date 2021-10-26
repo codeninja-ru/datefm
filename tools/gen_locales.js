@@ -11,8 +11,9 @@ const MONTH_DIR = path.join(SRC_DIR, 'month');
 const WEEK_DAY_DIR = path.join(SRC_DIR, 'week_day');
 
 import { Vars, ConstArray, Lang, FileName, DirName } from './classes/index.js';
-import { WeekDayFormatter } from './classes/weekDayFormatter.js';
+import { FileStream } from './classes/fileStream.js';
 import { WeekDayTemplate } from './templates/weekDayTemplate.js';
+import { MonthTemplate } from './templates/monthTemplate.js';
 
 const LANGS = {
     en: 'English',
@@ -144,70 +145,91 @@ const locales = {
     en: {
         week_day: {
             standAlone: {
-                short: weekDayTemplate(["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"], 'en', WEEK_DAY_CCC_DESC, 'ccc'),
-                full: weekDayTemplate(["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], 'en', WEEK_DAY_CCCC_DESC, 'cccc')
+                short: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+                full: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
             },
         },
         month: {
             standAlone: {
-                short: monthTemplate(["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"], 'en', MONTH_STAND_ALONE_DESC, 'LLL'),
-                full: monthTemplate(["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"], 'en', MONTH_STAND_ALONE_DESC, 'LLLL'),
+                short: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                full: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
             },
             format: {
-                short: copyOf('LLL', monthTemplate(["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"], 'en', MONTH_FORMAT_DESC, 'MMM')),
-                full: copyOf('LLLL', monthTemplate(["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"], 'en', MONTH_FORMAT_DESC, 'MMMM')),
+                //short: copyOf('LLL', monthTemplate(["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"], 'en', MONTH_FORMAT_DESC, 'MMM')),
+                //full: copyOf('LLLL', monthTemplate(["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"], 'en', MONTH_FORMAT_DESC, 'MMMM')),
             }
         }
     },
     ru: {
         week_day: {
             standAlone: {
-                short: weekDayTemplate(['Вск', 'Пон', 'Вт', 'Ср', 'Чт', 'Птн', 'Сб'], 'ru', WEEK_DAY_CCC_DESC, 'ccc'),
-                full: weekDayTemplate(['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'], 'ru', WEEK_DAY_CCCC_DESC, 'cccc')
+                short: ['Вск', 'Пон', 'Вт', 'Ср', 'Чт', 'Птн', 'Сб'],
+                full: ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'],
             },
         },
         month: {
             standAlone: {
-                short: monthTemplate(["янв.", "февр.", "март", "апр.", "май", "июнь", "июль", "авг.", "сент.", "окт.", "нояб.", "дек."], 'ru', MONTH_STAND_ALONE_DESC, 'LLL'),
-                full: monthTemplate(["январь", "февраль", "март", "апрель", "май", "июнь", "июль", "август", "сентябрь", "октябрь", "ноябрь", "декабрь" ], 'ru', MONTH_STAND_ALONE_DESC, 'LLLL'),
+                short: ["янв.", "февр.", "март", "апр.", "май", "июнь", "июль", "авг.", "сент.", "окт.", "нояб.", "дек."],
+                full: ["январь", "февраль", "март", "апрель", "май", "июнь", "июль", "август", "сентябрь", "октябрь", "ноябрь", "декабрь" ],
             },
             format: {
-                short: monthTemplate(["янв.", "февр.", "мар.", "апр.", "мая", "июня", "июля", "авг.", "сент.", "окт.", "нояб.", "дек." ], 'ru', MONTH_FORMAT_DESC, 'MMM'),
-                full: monthTemplate(['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'], 'ru', MONTH_FORMAT_DESC, 'MMMM'),
+                //short: monthTemplate(["янв.", "февр.", "мар.", "апр.", "мая", "июня", "июля", "авг.", "сент.", "окт.", "нояб.", "дек." ], 'ru', MONTH_FORMAT_DESC, 'MMM'),
+                //full: monthTemplate(['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'], 'ru', MONTH_FORMAT_DESC, 'MMMM'),
             }
         }
     }
 };
 
-//Object.entries(locales).forEach(([key, value]) => {
-//    value.week_day.standAlone.full.writeFile();
-//    value.week_day.standAlone.short.writeFile();
-//    value.month.standAlone.full.writeFile();
-//    value.month.standAlone.short.writeFile();
-//    value.month.format.full.writeFile();
-//    value.month.format.short.writeFile();
-//
-//});
-//
-
 const weekDayDirName = new DirName('week_day');
+const monthDirName = new DirName('month');
 
-WeekDayFormatter
-    .make(
-        new Vars(
-            new ConstArray(["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]),
-            new Lang('en'),
-            WEEK_DAY_CCC_DESC
-        ),
-        new WeekDayTemplate()
-    ).write(new FileName(weekDayDirName, 'ccc'));
+Object.entries(locales).forEach(([lang, value]) => {
+    // week day
+    FileStream
+        .make(
+            new Vars(
+                new ConstArray(value.week_day.standAlone.short),
+                new Lang(lang),
+                WEEK_DAY_CCC_DESC
+            ),
+            new WeekDayTemplate()
+        ).write(new FileName(weekDayDirName, 'ccc'));
 
-WeekDayFormatter
-    .make(
-        new Vars(
-            new ConstArray(['Вск', 'Пон', 'Вт', 'Ср', 'Чт', 'Птн', 'Сб']),
-            new Lang('ru'),
-            WEEK_DAY_CCC_DESC
-        ),
-        new WeekDayTemplate()
-    ).write(new FileName(weekDayDirName, 'ccc'));
+    FileStream
+        .make(
+            new Vars(
+                new ConstArray(value.week_day.standAlone.full),
+                new Lang(lang),
+                WEEK_DAY_CCCC_DESC
+            ),
+            new WeekDayTemplate()
+        ).write(new FileName(weekDayDirName, 'cccc'));
+
+    // month
+    FileStream
+        .make(
+            new Vars(
+                new ConstArray(value.month.standAlone.short),
+                new Lang(lang),
+                MONTH_STAND_ALONE_DESC,
+            ),
+            new MonthTemplate()
+        ).write(new FileName(weekDayDirName, 'LLL'));
+
+    FileStream
+        .make(
+            new Vars(
+                new ConstArray(value.month.standAlone.full),
+                new Lang(lang),
+                MONTH_STAND_ALONE_DESC,
+            ),
+            new MonthTemplate()
+        ).write(new FileName(weekDayDirName, 'LLLL'));
+
+    //value.month.standAlone.full.writeFile();
+    //value.month.standAlone.short.writeFile();
+    //value.month.format.full.writeFile();
+    //value.month.format.short.writeFile();
+
+});
+

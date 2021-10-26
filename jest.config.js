@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     moduleNameMapper: {
         'datefm(.*)': '<rootDir>/src/$1',
     },

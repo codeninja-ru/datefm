@@ -2,9 +2,8 @@ import path from 'path';
 import fs from 'fs';
 
 import { FileName } from './fileName.js';
-import { log } from 'util';
 
-export class WeekDayFormatter {
+export class FileStream {
     constructor(vars, template) {
         this.vars = vars;
         this.template = template;

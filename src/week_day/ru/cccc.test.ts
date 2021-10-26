@@ -1,4 +1,4 @@
-// auto-generated, DO NOT EDIT, see tools/gen_locales.js
+// auto-generated, DO NOT EDIT, see tools/weekDayTemplate.js
 import { datefm } from 'datefm';
 import cccc from 'datefm/week_day/ru/cccc';
 
@@ -12,8 +12,6 @@ describe('cccc (ru)', () => {
         expect(formatter(new Date('10/07/2021 10:10:10 UTC'))).toEqual('Четверг');
         expect(formatter(new Date('10/08/2021 10:10:10 UTC'))).toEqual('Пятница');
         expect(formatter(new Date('10/09/2021 10:10:10 UTC'))).toEqual('Суббота');
-        expect(formatter(new Date('10/10/2021 10:10:10 UTC'))).toEqual('Воскресенье');
-        expect(formatter(new Date('10/11/2021 10:10:10 UTC'))).toEqual('Понедельник');
     });
 
 });
