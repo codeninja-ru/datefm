@@ -1,4 +1,4 @@
-// auto-generated, DO NOT EDIT, see tools/gen_locales.js
+// auto-generated, DO NOT EDIT, see tools/monthTemplate.js
 import { datefm } from 'datefm';
 import LLL from 'datefm/month/ru/lll_';
 

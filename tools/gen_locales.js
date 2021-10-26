@@ -214,7 +214,7 @@ Object.entries(locales).forEach(([lang, value]) => {
                 MONTH_STAND_ALONE_DESC,
             ),
             new MonthTemplate()
-        ).write(new FileName(weekDayDirName, 'LLL'));
+        ).write(new FileName(monthDirName, 'LLL'));
 
     FileStream
         .make(
@@ -224,7 +224,7 @@ Object.entries(locales).forEach(([lang, value]) => {
                 MONTH_STAND_ALONE_DESC,
             ),
             new MonthTemplate()
-        ).write(new FileName(weekDayDirName, 'LLLL'));
+        ).write(new FileName(monthDirName, 'LLLL'));
 
     //value.month.standAlone.full.writeFile();
     //value.month.standAlone.short.writeFile();
