@@ -14,6 +14,7 @@ import { Vars, ConstArray, Lang, FileName, DirName } from './classes/index.js';
 import { FileStream } from './classes/fileStream.js';
 import { WeekDayTemplate } from './templates/weekDayTemplate.js';
 import { MonthTemplate } from './templates/monthTemplate.js';
+import { ExportIfEqual } from './templates/exportIfEqual.js';
 
 const LANGS = {
     en: 'English',
@@ -155,8 +156,8 @@ const locales = {
                 full: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
             },
             format: {
-                //short: copyOf('LLL', monthTemplate(["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"], 'en', MONTH_FORMAT_DESC, 'MMM')),
-                //full: copyOf('LLLL', monthTemplate(["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"], 'en', MONTH_FORMAT_DESC, 'MMMM')),
+                short: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                full: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
             }
         }
     },
@@ -173,8 +174,8 @@ const locales = {
                 full: ["январь", "февраль", "март", "апрель", "май", "июнь", "июль", "август", "сентябрь", "октябрь", "ноябрь", "декабрь" ],
             },
             format: {
-                //short: monthTemplate(["янв.", "февр.", "мар.", "апр.", "мая", "июня", "июля", "авг.", "сент.", "окт.", "нояб.", "дек." ], 'ru', MONTH_FORMAT_DESC, 'MMM'),
-                //full: monthTemplate(['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'], 'ru', MONTH_FORMAT_DESC, 'MMMM'),
+                short: ["янв.", "февр.", "мар.", "апр.", "мая", "июня", "июля", "авг.", "сент.", "окт.", "нояб.", "дек." ],
+                full: ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'],
             }
         }
     }
@@ -206,6 +207,7 @@ Object.entries(locales).forEach(([lang, value]) => {
         ).write(new FileName(weekDayDirName, 'cccc'));
 
     // month
+    const monthShortFileName = new FileName(monthDirName, 'LLL');
     FileStream
         .make(
             new Vars(
@@ -214,8 +216,9 @@ Object.entries(locales).forEach(([lang, value]) => {
                 MONTH_STAND_ALONE_DESC,
             ),
             new MonthTemplate()
-        ).write(new FileName(monthDirName, 'LLL'));
+        ).write(monthShortFileName);
 
+    const monthFullFileName = new FileName(monthDirName, 'LLLL');
     FileStream
         .make(
             new Vars(
@@ -224,12 +227,33 @@ Object.entries(locales).forEach(([lang, value]) => {
                 MONTH_STAND_ALONE_DESC,
             ),
             new MonthTemplate()
-        ).write(new FileName(monthDirName, 'LLLL'));
+        ).write(monthFullFileName);
 
-    //value.month.standAlone.full.writeFile();
-    //value.month.standAlone.short.writeFile();
-    //value.month.format.full.writeFile();
-    //value.month.format.short.writeFile();
+    FileStream
+        .make(
+            new Vars(
+                new ConstArray(value.month.format.short),
+                new Lang(lang),
+                MONTH_FORMAT_DESC,
+            ),
+            new ExportIfEqual(
+                monthShortFileName,
+                value.month.standAlone.short,
+                new MonthTemplate()
+            )
+        ).write(new FileName(monthDirName, 'MMM'));
 
+    FileStream
+        .make(
+            new Vars(
+                new ConstArray(value.month.format.full),
+                new Lang(lang),
+                MONTH_FORMAT_DESC,
+            ),
+            new ExportIfEqual(
+                monthFullFileName,
+                value.month.standAlone.full,
+                new MonthTemplate()
+            )
+        ).write(new FileName(monthDirName, 'MMMM'));
 });
-
