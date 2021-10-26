@@ -11,7 +11,7 @@ export class ExportIfEqual {
 
     source(fileName, vars) {
         if (vars.array.isEqual(this.array)) {
-            console.log(`copy detected, export from ./${this.fileName.sourceName()}`);
+            console.log(`${fileName.name} is a copy of ${this.fileName.name}, export from ./${this.fileName.sourceName()}`);
 
             return `// auto-generated, DO NOT EDIT, see tools/${path.basename(__filename)}
 export { default } from './${this.fileName.importName()}';
