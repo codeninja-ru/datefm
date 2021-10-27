@@ -82,7 +82,7 @@ Object.entries(locales).forEach(([lang, value]) => {
             new Vars(
                 new ConstArray(value.month.standAlone.short),
                 new Lang(lang),
-                MONTH_STAND_ALONE_DESC,
+                MONTH_STAND_ALONE_DESC
             ),
             new MonthTemplate()
         ).write(monthShortFileName);
@@ -93,7 +93,7 @@ Object.entries(locales).forEach(([lang, value]) => {
             new Vars(
                 new ConstArray(value.month.standAlone.full),
                 new Lang(lang),
-                MONTH_STAND_ALONE_DESC,
+                MONTH_STAND_ALONE_DESC
             ),
             new MonthTemplate()
         ).write(monthFullFileName);
@@ -103,7 +103,7 @@ Object.entries(locales).forEach(([lang, value]) => {
             new Vars(
                 new ConstArray(value.month.format.short),
                 new Lang(lang),
-                MONTH_FORMAT_DESC,
+                MONTH_FORMAT_DESC
             ),
             new ExportIfEqual(
                 monthShortFileName,
@@ -117,7 +117,7 @@ Object.entries(locales).forEach(([lang, value]) => {
             new Vars(
                 new ConstArray(value.month.format.full),
                 new Lang(lang),
-                MONTH_FORMAT_DESC,
+                MONTH_FORMAT_DESC
             ),
             new ExportIfEqual(
                 monthFullFileName,
