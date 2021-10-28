@@ -8,6 +8,8 @@ import { ExportIfEqual } from './templates/exportIfEqual.js';
 
 const WEEK_DAY_CCC_DESC = 'Abbreviated day of week. Stand-Along (in nominative case)';
 const WEEK_DAY_CCCC_DESC = 'Full day of week. Stand-Along (in nominative case)';
+const WEEK_DAY_EEE_DESC = 'Abbreviated day of week. Format style';
+const WEEK_DAY_EEEE_DESC = 'Full day of week. Format style';
 const MONTH_STAND_ALONE_DESC = 'Name of month, Abbreveated. Stand-Alone (intended to be used without ‘d’ for day number).';
 const MONTH_FORMAT_DESC = 'Name of month, (intended to be used in conjunction with ‘d’ for day number).';
 
@@ -18,6 +20,10 @@ const locales = {
                 short: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
                 full: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
             },
+            format: {
+                short: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+                full: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+            }
         },
         month: {
             standAlone: {
@@ -35,6 +41,10 @@ const locales = {
             standAlone: {
                 short: ['Вск', 'Пон', 'Вт', 'Ср', 'Чт', 'Птн', 'Сб'],
                 full: ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'],
+            },
+            format: {
+                short: ['Вск', 'Пон', 'Вт', 'Ср', 'Чт', 'Птн', 'Сб'],
+                full: ['воскресенье', 'понедельник', 'вторник', 'среду', 'четверг', 'пятницу', 'субботу'],
             },
         },
         month: {
@@ -74,6 +84,26 @@ Object.entries(locales).forEach(([lang, value]) => {
             ),
             new WeekDayTemplate()
         ).write(new FileName(weekDayDirName, 'cccc'));
+
+    FileStream
+        .make(
+            new Vars(
+                new ConstArray(value.week_day.format.short),
+                new Lang(lang),
+                WEEK_DAY_EEE_DESC
+            ),
+            new WeekDayTemplate()
+        ).write(new FileName(weekDayDirName, 'eee'));
+
+    FileStream
+        .make(
+            new Vars(
+                new ConstArray(value.week_day.format.full),
+                new Lang(lang),
+                WEEK_DAY_EEEE_DESC
+            ),
+            new WeekDayTemplate()
+        ).write(new FileName(weekDayDirName, 'eeee'));
 
     // month
     const monthShortFileName = new FileName(monthDirName, 'LLL');

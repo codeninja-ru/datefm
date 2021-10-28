@@ -9,14 +9,14 @@ export class MonthTemplate {
         const { array, lang, desc } = vars;
 
         return `// auto-generated, DO NOT EDIT, see tools/${path.basename(__filename)}
-const MONTHS = ${array.toJsArray()};
+const MONTHS = ${array.toJsArray()} as const;
 
 /**
  * ${desc}
  * @lang ${lang.name}
  * @example ${array.toExampleDoc()}
  * */
-export default function ${fileName.name}(date: Date) : string {
+export default function ${fileName.name}(date: Date) : typeof MONTHS[number] {
     return MONTHS[date.getMonth()];
 }
 `;

@@ -9,17 +9,16 @@ export class WeekDayTemplate {
         const { array, lang, desc } = vars;
 
         return `// auto-generated, DO NOT EDIT, see tools/${path.basename(__filename)}
-const DAYS_OF_WEEK = ${array.toJsArray()};
+const DAYS_OF_WEEK = ${array.toJsArray()} as const;
 
 /**
  * ${desc}
  * @lang ${lang.name}
  * @example ${array.toExampleDoc()}
  * */
-export default function ${fileName.name}(date: Date) : string {
+export default function ${fileName.name}(date: Date) : typeof DAYS_OF_WEEK[number] {
     return DAYS_OF_WEEK[date.getDay()];
-}
-`;
+}`;
     }
 
     test(fileName, vars) {

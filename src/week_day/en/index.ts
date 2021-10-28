@@ -2,3 +2,5 @@
 
 export { default as ccc } from './ccc';
 export { default as cccc } from './cccc';
+export { default as eee } from './eee';
+export { default as eeee } from './eeee';

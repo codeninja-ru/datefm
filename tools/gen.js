@@ -69,7 +69,7 @@ function genIndex(dirpath) {
                  const stat = fs.lstatSync(filepath);
                  const name = path.parse(filename).name;
                  const ext = path.parse(filename).ext;
-                 if (isSourceFile(filepath)) {
+                 if (isSourceFile(filepath) && !filepath.endsWith('types.ts')) {
                      const exportAs = getExportAsName(filename);
                      return `export { default as ${exportAs} } from './${name}';`;
                  } else if (stat.isDirectory()) {

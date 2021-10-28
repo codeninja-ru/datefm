@@ -2,5 +2,13 @@
 
 export { default as en_ccc } from './en/ccc';
 export { default as en_cccc } from './en/cccc';
+export { default as en_eee } from './en/eee';
+export { default as en_eeee } from './en/eeee';
+export { default as first_day_monday_c } from './first_day_monday/c';
+export { default as first_day_monday_cc } from './first_day_monday/cc';
+export { default as first_day_sunday_c } from './first_day_sunday/c';
+export { default as first_day_sunday_cc } from './first_day_sunday/cc';
 export { default as ru_ccc } from './ru/ccc';
 export { default as ru_cccc } from './ru/cccc';
+export { default as ru_eee } from './ru/eee';
+export { default as ru_eeee } from './ru/eeee';
