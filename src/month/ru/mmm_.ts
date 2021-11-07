@@ -1,4 +1,4 @@
-// auto-generated, DO NOT EDIT, see tools/monthTemplate.js
+// auto-generated, DO NOT EDIT, see scripts/monthTemplate.js
 const MONTHS = ['янв.', 'февр.', 'мар.', 'апр.', 'мая', 'июня', 'июля', 'авг.', 'сент.', 'окт.', 'нояб.', 'дек.'] as const;
 
 /**

@@ -1,4 +1,4 @@
-// auto-generated, DO NOT EDIT, see tools/monthTemplate.js
+// auto-generated, DO NOT EDIT, see scripts/monthTemplate.js
 import { datefm } from 'datefm';
 import MMMM from 'datefm/month/ru/mmmm_';
 

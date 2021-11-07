@@ -1,4 +1,4 @@
-// auto-generated, DO NOT EDIT, see tools/monthTemplate.js
+// auto-generated, DO NOT EDIT, see scripts/monthTemplate.js
 const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] as const;
 
 /**

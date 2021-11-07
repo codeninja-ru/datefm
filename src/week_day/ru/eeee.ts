@@ -1,4 +1,4 @@
-// auto-generated, DO NOT EDIT, see tools/weekDayTemplate.js
+// auto-generated, DO NOT EDIT, see scripts/weekDayTemplate.js
 const DAYS_OF_WEEK = ['воскресенье', 'понедельник', 'вторник', 'среду', 'четверг', 'пятницу', 'субботу'] as const;
 
 /**

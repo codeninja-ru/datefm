@@ -1,4 +1,4 @@
-// auto-generated, DO NOT EDIT, see tools/weekDayTemplate.js
+// auto-generated, DO NOT EDIT, see scripts/weekDayTemplate.js
 import { datefm } from 'datefm';
 import eeee from 'datefm/week_day/en/eeee';
 

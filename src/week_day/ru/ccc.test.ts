@@ -1,4 +1,4 @@
-// auto-generated, DO NOT EDIT, see tools/weekDayTemplate.js
+// auto-generated, DO NOT EDIT, see scripts/weekDayTemplate.js
 import { datefm } from 'datefm';
 import ccc from 'datefm/week_day/ru/ccc';
 

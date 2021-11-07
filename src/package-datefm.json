@@ -1,0 +1,25 @@
+{
+    "name": "datefm",
+    "version": "0.0.0",
+    "description": "dateformat library",
+    "main": "index.js",
+    "sideEffects": false,
+    "type": "module",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/codeninja-ru/datefm.git"
+    },
+    "keywords": [
+        "dateformat",
+        "date",
+        "format",
+        "time",
+        "i18n"
+    ],
+    "author": "Vitaliy Mayorov",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/codeninja-ru/datefm/issues"
+    },
+    "homepage": "https://github.com/codeninja-ru/datefm#readme"
+}

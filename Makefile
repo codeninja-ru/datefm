@@ -10,9 +10,14 @@ test: build
 	node --experimental-vm-modules ./node_modules/jest/bin/jest.js
 
 index:
-	node ./tools/gen.js
+	node ./scripts/gen.js
 
 locales:
-	node ./tools/gen_locales.js
+	node ./scripts/gen_locales.js
 
 gen: locales index
+
+publish: gen build test
+	cp ./src/package-datefm.json ./build/package.json
+	cp ./src/.npmignore ./build
+	npm publish ./build --access=public #--dry-run
