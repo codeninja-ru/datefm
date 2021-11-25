@@ -2,12 +2,13 @@ SHELL=/bin/bash
 
 clean:
 	rm -rf ./build
+	rm -rf ./coverage
 
 build: clean
 	./node_modules/typescript/bin/tsc
 
 test: build
-	node --experimental-vm-modules --coverage ./node_modules/jest/bin/jest.js
+	node --experimental-vm-modules ./node_modules/jest/bin/jest.js --coverage 
 
 index:
 	node ./scripts/gen.js
