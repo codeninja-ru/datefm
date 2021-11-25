@@ -26,7 +26,7 @@ export default function ${fileName.name}(date: Date) : typeof DAYS_OF_WEEK[numbe
         const items = array
               .values()
               .map((value, key) => {
-                  return indent(2,  `expect(formatter(new Date('10/${pad2(key + 3)}/2021 10:10:10 UTC'))).toEqual('${value}');`);
+                  return indent(2,  `expect(formatter(new Date('10/${pad2(key + 3)}/2021 10:10:10'))).toEqual('${value}');`);
               })
               .join('\n');
         return `// auto-generated, DO NOT EDIT, see scripts/${path.basename(__filename)}

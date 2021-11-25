@@ -27,7 +27,7 @@ export default function ${fileName.name}(date: Date) : typeof MONTHS[number] {
         const items = array
               .values()
               .map((value, key) => {
-                  return indent(2, `expect(formatter(new Date('${pad2(key + 1)}/10/2021 10:10:10 UTC'))).toEqual('${value}');`
+                  return indent(2, `expect(formatter(new Date('${pad2(key + 1)}/10/2021 10:10:10'))).toEqual('${value}');`
 );
               })
               .join('\n');
