@@ -5,7 +5,8 @@ clean:
 	rm -rf ./coverage
 
 build: clean
-	./node_modules/typescript/bin/tsc
+	./node_modules/typescript/bin/tsc --project tsconfig.json
+	./node_modules/typescript/bin/tsc --project tsconfig.cjs.json
 
 test: build
 	node --experimental-vm-modules ./node_modules/jest/bin/jest.js --coverage 
