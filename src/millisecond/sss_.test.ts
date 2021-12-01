@@ -1,4 +1,4 @@
-import { format, SSS } from 'datefm';
+import { format, SSS } from 'udate';
 
 describe('SSS', () => {
     test('format milliseconds', () => {

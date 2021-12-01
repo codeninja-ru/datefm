@@ -1,4 +1,4 @@
-import { format, ww } from 'datefm';
+import { format, ww } from 'udate';
 
 describe('ww', () => {
     test('day of year', () => {

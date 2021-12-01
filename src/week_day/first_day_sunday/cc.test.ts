@@ -1,5 +1,5 @@
-import { format } from 'datefm';
-import cc from 'datefm/week_day/first_day_sunday/cc'
+import { format } from 'udate';
+import cc from 'udate/week_day/first_day_sunday/cc'
 
 describe('cc (the first day is Sunday)', () => {
     test('format day of week without leading zero', () => {

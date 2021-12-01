@@ -1,4 +1,4 @@
-import { format, MM } from 'datefm';
+import { format, MM } from 'udate';
 
 describe('MM', () => {
     test('format month (leading zero)', () => {

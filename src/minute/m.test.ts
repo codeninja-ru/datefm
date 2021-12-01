@@ -1,4 +1,4 @@
-import { format, m } from 'datefm';
+import { format, m } from 'udate';
 
 describe('m (minutes)', () => {
     test('format minutes', () => {

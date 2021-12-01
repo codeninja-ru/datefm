@@ -32,12 +32,12 @@ export default function ${fileName.name}(date: Date) : typeof MONTHS[number] {
               })
               .join('\n');
         return `// auto-generated, DO NOT EDIT, see scripts/${path.basename(__filename)}
-import { datefm } from 'datefm';
-import ${fileName.name} from 'datefm/month/${lang}/${fileName.importName()}';
+import { format } from 'udate';
+import ${fileName.name} from 'udate/month/${lang}/${fileName.importName()}';
 
 describe('${fileName.name} (${lang})', () => {
     test('format month', () => {
-        const formatter = datefm\`\$\{${fileName.name}\}\`;
+        const formatter = format\`\$\{${fileName.name}\}\`;
 ${items}
     });
 

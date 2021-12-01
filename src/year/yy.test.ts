@@ -1,4 +1,4 @@
-import { format, yy } from 'datefm';
+import { format, yy } from 'udate';
 
 describe('yy', () => {
     test('format two digit year', () => {

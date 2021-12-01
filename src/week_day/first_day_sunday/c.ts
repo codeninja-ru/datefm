@@ -1,4 +1,4 @@
-import { WeekDayResult_c } from 'datefm/week_day/types';
+import { WeekDayResult_c } from 'udate/week_day/types';
 
 /**
  * day of week, no leading zero, starting from 1. 1 is Sunday

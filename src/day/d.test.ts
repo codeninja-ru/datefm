@@ -1,4 +1,4 @@
-import { format, d } from 'datefm';
+import { format, d } from 'udate';
 
 describe('d', () => {
     test('day of the mounth without leading zero', () => {

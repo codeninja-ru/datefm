@@ -1,4 +1,4 @@
-import { format, D } from 'datefm';
+import { format, D } from 'udate';
 
 describe('D', () => {
     test('day of year without leadin zero', () => {

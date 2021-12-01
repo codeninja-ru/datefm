@@ -1,4 +1,4 @@
-import { format, dd, mm, yyyy, HH, MM, ss, SSS } from 'datefm';
+import { format, dd, mm, yyyy, HH, MM, ss, SSS } from 'udate';
 
 describe('complex tests', () => {
     test('dd/mm/yyyy', () => {

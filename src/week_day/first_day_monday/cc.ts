@@ -1,4 +1,4 @@
-import { WeekDayResult_cc } from 'datefm/week_day/types';
+import { WeekDayResult_cc } from 'udate/week_day/types';
 
 /**
  * day of week, leading zero, starting from 01. The first day of week is Monday - 01

@@ -30,12 +30,12 @@ export default function ${fileName.name}(date: Date) : typeof DAYS_OF_WEEK[numbe
               })
               .join('\n');
         return `// auto-generated, DO NOT EDIT, see scripts/${path.basename(__filename)}
-import { datefm } from 'datefm';
-import ${fileName.name} from 'datefm/week_day/${lang}/${fileName.name}';
+import { format } from 'udate';
+import ${fileName.name} from 'udate/week_day/${lang}/${fileName.name}';
 
 describe('${fileName.name} (${lang})', () => {
     test('format day of week', () => {
-        const formatter = datefm\`\$\{${fileName.name}\}\`;
+        const formatter = format\`\$\{${fileName.name}\}\`;
 ${items}
     });
 

@@ -1,4 +1,4 @@
-import { format, h } from 'datefm';
+import { format, h } from 'udate';
 
 describe('h', () => {
     test('format hours; no leading zero, 12-hour clock [1-12]', () => {

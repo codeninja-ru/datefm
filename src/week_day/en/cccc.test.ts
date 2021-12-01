@@ -1,6 +1,6 @@
 // auto-generated, DO NOT EDIT, see scripts/weekDayTemplate.js
-import { format } from 'datefm';
-import cccc from 'datefm/week_day/en/cccc';
+import { format } from 'udate';
+import cccc from 'udate/week_day/en/cccc';
 
 describe('cccc (en)', () => {
     test('format day of week', () => {

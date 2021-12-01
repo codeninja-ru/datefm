@@ -1,7 +1,7 @@
 type Formatter = (date: Date) => string;
 
 /**
- * @example var formatFunction = datefm`${DD}-${MM}-${YYY}`;
+ * @example var formatFunction = udate`${DD}-${MM}-${YYY}`;
  * console.log(formatFunction(new Date()));
  */
 export function format(strings : TemplateStringsArray, ...formatters : Array<Formatter>) : Formatter {

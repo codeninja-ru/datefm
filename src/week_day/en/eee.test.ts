@@ -1,6 +1,6 @@
 // auto-generated, DO NOT EDIT, see scripts/weekDayTemplate.js
-import { format } from 'datefm';
-import eee from 'datefm/week_day/en/eee';
+import { format } from 'udate';
+import eee from 'udate/week_day/en/eee';
 
 describe('eee (en)', () => {
     test('format day of week', () => {

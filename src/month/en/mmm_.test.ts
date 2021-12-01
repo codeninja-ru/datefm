@@ -1,6 +1,6 @@
 // auto-generated, DO NOT EDIT, see scripts/monthTemplate.js
-import { format } from 'datefm';
-import MMM from 'datefm/month/en/mmm_';
+import { format } from 'udate';
+import MMM from 'udate/month/en/mmm_';
 
 describe('MMM (en)', () => {
     test('format month', () => {

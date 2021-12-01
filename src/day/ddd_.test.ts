@@ -1,4 +1,4 @@
-import { format, DDD } from 'datefm';
+import { format, DDD } from 'udate';
 
 describe('DDD', () => {
     test('day of year with 3 leadin zeros', () => {

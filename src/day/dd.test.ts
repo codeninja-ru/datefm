@@ -1,4 +1,4 @@
-import { format, dd } from 'datefm';
+import { format, dd } from 'udate';
 
 describe('dd', () => {
     test('day of the month (leading zero)', () => {

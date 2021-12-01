@@ -1,4 +1,4 @@
-import { format, s } from 'datefm';
+import { format, s } from 'udate';
 
 describe('s', () => {
     test('format seconds, no leading zero', () => {

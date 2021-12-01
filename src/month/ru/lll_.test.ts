@@ -1,6 +1,6 @@
 // auto-generated, DO NOT EDIT, see scripts/monthTemplate.js
-import { format } from 'datefm';
-import LLL from 'datefm/month/ru/lll_';
+import { format } from 'udate';
+import LLL from 'udate/month/ru/lll_';
 
 describe('LLL (ru)', () => {
     test('format month', () => {
