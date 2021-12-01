@@ -1,8 +1,8 @@
-import { datefm, K } from 'datefm';
+import { format, K } from 'datefm';
 
 describe('K', () => {
     test('format hours; no leading zero, 12-hour clock [0-11]', () => {
-        const formatter = datefm`${K}`;
+        const formatter = format`${K}`;
         expect(formatter(new Date('11/10/2021 10:11:12'))).toEqual('10');
         expect(formatter(new Date('11/10/2021 11:11:12'))).toEqual('11');
         expect(formatter(new Date('11/10/2021 09:11:12'))).toEqual('9');

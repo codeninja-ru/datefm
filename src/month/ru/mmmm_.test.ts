@@ -1,10 +1,10 @@
 // auto-generated, DO NOT EDIT, see scripts/monthTemplate.js
-import { datefm } from 'datefm';
+import { format } from 'datefm';
 import MMMM from 'datefm/month/ru/mmmm_';
 
 describe('MMMM (ru)', () => {
     test('format month', () => {
-        const formatter = datefm`${MMMM}`;
+        const formatter = format`${MMMM}`;
         expect(formatter(new Date('01/10/2021 10:10:10'))).toEqual('января');
         expect(formatter(new Date('02/10/2021 10:10:10'))).toEqual('февраля');
         expect(formatter(new Date('03/10/2021 10:10:10'))).toEqual('марта');

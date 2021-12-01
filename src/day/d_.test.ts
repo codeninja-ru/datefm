@@ -1,8 +1,8 @@
-import { datefm, D } from 'datefm';
+import { format, D } from 'datefm';
 
 describe('D', () => {
     test('day of year without leadin zero', () => {
-        const formatter = datefm`${D}`;
+        const formatter = format`${D}`;
         expect(formatter(new Date('1 January 2016 10:10:10'))).toEqual('1');
         expect(formatter(new Date('2 January 2016 10:10:10'))).toEqual('2');
         expect(formatter(new Date('10 January 2016 10:10:10'))).toEqual('10');

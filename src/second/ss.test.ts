@@ -1,8 +1,8 @@
-import { datefm, ss } from 'datefm';
+import { format, ss } from 'datefm';
 
 describe('ss', () => {
     test('format seconds, no leading zero', () => {
-        const formatter = datefm`${ss}`;
+        const formatter = format`${ss}`;
         expect(formatter(new Date('11/10/2021 10:11:00'))).toEqual('00');
         expect(formatter(new Date('11/10/2021 10:11:01'))).toEqual('01');
         expect(formatter(new Date('11/10/2021 10:11:05'))).toEqual('05');

@@ -1,8 +1,8 @@
-import { datefm, yyyy } from 'datefm';
+import { format, yyyy } from 'datefm';
 
 describe('yyyy', () => {
     test('format two digit year', () => {
-        const formatter = datefm`${yyyy}`;
+        const formatter = format`${yyyy}`;
         expect(formatter(new Date('11/10/2021 10:10:10'))).toEqual('2021');
         expect(formatter(new Date('11/10/1988 10:10:10'))).toEqual('1988');
         expect(formatter(new Date('11/10/2001 10:10:10'))).toEqual('2001');

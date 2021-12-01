@@ -1,8 +1,8 @@
-import { datefm, DDD } from 'datefm';
+import { format, DDD } from 'datefm';
 
 describe('DDD', () => {
     test('day of year with 3 leadin zeros', () => {
-        const formatter = datefm`${DDD}`;
+        const formatter = format`${DDD}`;
         expect(formatter(new Date('1 January 2016 10:10:10'))).toEqual('001');
         expect(formatter(new Date('2 January 2016 10:10:10'))).toEqual('002');
         expect(formatter(new Date('10 January 2016 10:10:10'))).toEqual('010');

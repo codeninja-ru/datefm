@@ -1,8 +1,8 @@
-import { datefm, SSS } from 'datefm';
+import { format, SSS } from 'datefm';
 
 describe('SSS', () => {
     test('format milliseconds', () => {
-        const formatter = datefm`${SSS}`;
+        const formatter = format`${SSS}`;
         expect(formatter(new Date('11/10/2021 10:10:10.010'))).toEqual('010');
         expect(formatter(new Date('11/10/2021 10:10:10.000'))).toEqual('000');
         expect(formatter(new Date('11/10/2021 10:10:10.100'))).toEqual('100');

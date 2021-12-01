@@ -4,7 +4,7 @@ type Formatter = (date: Date) => string;
  * @example var formatFunction = datefm`${DD}-${MM}-${YYY}`;
  * console.log(formatFunction(new Date()));
  */
-export function datefm(strings : TemplateStringsArray, ...formatters : Array<Formatter>) : Formatter {
+export function format(strings : TemplateStringsArray, ...formatters : Array<Formatter>) : Formatter {
     return function(date: Date) : string {
         var result = '';
         for (var key in strings) {

@@ -1,10 +1,10 @@
 // auto-generated, DO NOT EDIT, see scripts/weekDayTemplate.js
-import { datefm } from 'datefm';
+import { format } from 'datefm';
 import eeee from 'datefm/week_day/en/eeee';
 
 describe('eeee (en)', () => {
     test('format day of week', () => {
-        const formatter = datefm`${eeee}`;
+        const formatter = format`${eeee}`;
         expect(formatter(new Date('10/03/2021 10:10:10'))).toEqual('Sunday');
         expect(formatter(new Date('10/04/2021 10:10:10'))).toEqual('Monday');
         expect(formatter(new Date('10/05/2021 10:10:10'))).toEqual('Tuesday');

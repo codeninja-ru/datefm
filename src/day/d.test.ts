@@ -1,8 +1,8 @@
-import { datefm, d } from 'datefm';
+import { format, d } from 'datefm';
 
 describe('d', () => {
     test('day of the mounth without leading zero', () => {
-        const formatter = datefm`${d}`;
+        const formatter = format`${d}`;
         expect(formatter(new Date('11/10/2021 10:10:10'))).toEqual('10');
         expect(formatter(new Date('11/09/2021 10:10:10'))).toEqual('9');
         expect(formatter(new Date('11/01/2021 10:10:10'))).toEqual('1');

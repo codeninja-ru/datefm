@@ -1,9 +1,9 @@
-import { datefm } from 'datefm';
+import { format } from 'datefm';
 import cc from 'datefm/week_day/first_day_monday/cc'
 
 describe('cc (first day is Monday)', () => {
     test('format day of week without leading zero', () => {
-        const formatter = datefm`${cc}`;
+        const formatter = format`${cc}`;
         expect(formatter(new Date('10/04/2021 10:10:10'))).toEqual('01');
         expect(formatter(new Date('10/05/2021 10:10:10'))).toEqual('02');
         expect(formatter(new Date('10/06/2021 10:10:10'))).toEqual('03');
