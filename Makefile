@@ -20,6 +20,12 @@ locales:
 gen: locales index
 
 publish: gen build test
-	cp ./src/package-datefm.json ./build/package.json
+	cp ./src/package.udate.json ./build/package.json
 	cp ./src/.npmignore ./build
-	npm publish ./build --access=public #--dry-run
+	npm publish ./build --access=public --dry-run
+
+pack: gen build test
+	cp ./src/package.udate.json ./build/package.json
+	cp ./src/.npmignore ./build
+	npm pack ./build
+

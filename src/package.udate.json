@@ -1,5 +1,5 @@
 {
-    "name": "datefm",
+    "name": "uname",
     "version": "0.0.0",
     "description": "dateformat library",
     "main": "index.js",
@@ -21,5 +21,9 @@
     "bugs": {
         "url": "https://github.com/codeninja-ru/datefm/issues"
     },
-    "homepage": "https://github.com/codeninja-ru/datefm#readme"
+    "homepage": "https://github.com/codeninja-ru/datefm#readme",
+    "exports":{
+      "import":"./esm/index.js",
+      "require":"./cjs/index.js"
+    }
 }
