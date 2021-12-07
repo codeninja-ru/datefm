@@ -19,13 +19,12 @@ locales:
 
 gen: locales index
 
-publish: gen build test
+build_npm_files:
 	cp ./src/package.udate.json ./build/package.json
 	cp ./src/.npmignore ./build
+
+publish: gen build test buld_npm_files
 	npm publish ./build --access=public --dry-run
 
-pack: gen build test
-	cp ./src/package.udate.json ./build/package.json
-	cp ./src/.npmignore ./build
+pack: gen build test build_npm_files
 	npm pack ./build
-
