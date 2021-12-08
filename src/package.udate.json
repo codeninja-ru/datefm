@@ -21,6 +21,8 @@
         "url": "https://github.com/codeninja-ru/datefm/issues"
     },
     "homepage": "https://github.com/codeninja-ru/datefm#readme",
+    "main": "./cjs/index.js",
+    "module": "./esm/index.js",
     "exports":{
       "import":"./esm/index.js",
       "require":"./cjs/index.js"

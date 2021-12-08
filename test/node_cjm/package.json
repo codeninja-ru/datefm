@@ -1,0 +1,11 @@
+{
+  "name": "test_node_cjm",
+  "version": "1.0.0",
+  "type": "commonjs",
+  "description": "test of commonjs integration",
+  "private": true,
+  "license": "ISC",
+  "dependencies": {
+    "udate": "file:../../udate-0.0.0.tgz"
+  }
+}
