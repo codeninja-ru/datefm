@@ -7,6 +7,7 @@ clean:
 build: clean
 	./node_modules/typescript/bin/tsc --project tsconfig.json
 	./node_modules/typescript/bin/tsc --project tsconfig.cjs.json
+	echo '{"type":"commonjs"}' > ./build/cjs/package.json
 
 test: build
 	node --experimental-vm-modules ./node_modules/jest/bin/jest.js --coverage 

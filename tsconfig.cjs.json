@@ -3,6 +3,7 @@
 
     "compilerOptions": {
         "module": "commonjs",                                /* Specify what module code is generated. */
-        "outDir": "./build/cjs"                                   /* Specify an output folder for all emitted files. */
+        "outDir": "./build/cjs",                                   /* Specify an output folder for all emitted files. */
+        "target": "es2015"
     }
 }
