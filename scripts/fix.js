@@ -16,7 +16,8 @@ import fs from 'fs';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const TARGET_DIR = path.join(__dirname, '../build/esm/');
+const ESM_DIR = path.join(__dirname, '../build/esm/');
+const CJS_DIR = path.join(__dirname, '../build/cjs/');
 
 const EXPORT_REGX = /(export .+? from ')(.+?)(';)/g;
 
@@ -59,4 +60,5 @@ function readDir(dirPath) {
     });
 }
 
-readDir(TARGET_DIR);
+readDir(ESM_DIR);
+readDir(CJS_DIR);

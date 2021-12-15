@@ -2,7 +2,7 @@
     "extends": "./tsconfig.json",
 
     "compilerOptions": {
-        "module": "commonjs",                                /* Specify what module code is generated. */
+        "module": "es2015",                                /* Specify what module code is generated. */
         "outDir": "./build/cjs",                                   /* Specify an output folder for all emitted files. */
         "target": "es2015"
     }

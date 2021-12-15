@@ -21,14 +21,17 @@ locales:
 fix:
 	node ./scripts/fix.js
 
+commonjs:
+	node ./scripts/commonjs.js
+
 gen: locales index
 
 build_npm_files:
 	cp ./src/package.udate.json ./build/package.json
 	cp ./src/.npmignore ./build
 
-publish: gen build fix test buld_npm_files
+publish: gen build fix commonjs test buld_npm_files
 	npm publish ./build --access=public --dry-run
 
-pack: gen build fix test build_npm_files
+pack: gen build fix commonjs test build_npm_files
 	npm pack ./build

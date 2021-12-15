@@ -1,4 +1,4 @@
-export * from './format';
+export { default as format } from './format';
 export * from './day/';
 export * from './year/';
 export * from './hour/';

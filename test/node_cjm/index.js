@@ -1,7 +1,7 @@
 const { format } = require("udate");
 
-const dd = require("udate/day/dd").default;
-const MM = require("udate/month/mm_").default;
+const dd = require("udate/day/dd");
+const MM = require("udate/month/mm_");
 
 console.log(dd, MM);
 
