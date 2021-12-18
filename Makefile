@@ -1,5 +1,7 @@
 SHELL=/bin/bash
 
+# TODO replace pathes with variables
+
 clean:
 	rm -rf ./build
 	rm -rf ./coverage
@@ -12,26 +14,21 @@ build: clean
 test: build
 	node --experimental-vm-modules ./node_modules/jest/bin/jest.js --coverage 
 
-index:
-	node ./scripts/gen.js
-
-locales:
-	node ./scripts/gen_locales.js
-
-fix:
-	node ./scripts/fix.js
-
-commonjs:
-	node ./scripts/commonjs.js
-
-gen: locales index
-
-build_npm_files:
+package:
 	cp ./src/package.udate.json ./build/package.json
 	cp ./src/.npmignore ./build
+	node ./scripts/fix.js
+	node ./scripts/commonjs.js
+	node ./scripts/update_package.js
 
-publish: gen build fix commonjs test buld_npm_files
+gen:
+	node ./scripts/gen_locales.js
+	node ./scripts/gen.js
+
+publish: gen build package test
 	npm publish ./build --access=public --dry-run
 
-pack: gen build fix commonjs test build_npm_files
+pack: gen build package test
 	npm pack ./build
+	make -C ./test/node_cjs/ test
+	make -C ./test/node_esm/ test

@@ -11,7 +11,6 @@
 import { fileURLToPath } from 'url';
 import path from 'path';
 import fs from 'fs';
-import { log } from 'util';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -21,7 +20,7 @@ const FUNC_NAME_REG = /export default function (.+?)\(/;
 const IMPORT_REG = /import (.+?) from '(.+?)';/g;
 const EXPORT_ALL_REG = /export \* from '(.+?)';/g;
 const EXPORT_DEFAULT_REG = /export \{ default as (.+?) \} from '(.+?)';/g;
-const EXPORT_CJS_REG = /module.exports.(.+?) = require\('(.+?)'\);/g;
+const EXPORT_DEFAULT_DEFAULT_REG = /export \{ default \} from '(.+?)';/g;
 
 function parseFuncName(content) {
     const match = content.match(FUNC_NAME_REG);
@@ -48,7 +47,21 @@ function fixFile(filePath) {
     const content = fs.readFileSync(filePath).toString();
     const funcName = parseFuncName(content);
     if (!funcName) {
-        console.log(`esm module is not found in ${filePath}`);
+        let changeCount = 0;
+        const newContent = content.replace(EXPORT_DEFAULT_DEFAULT_REG, function(match, importPath) {
+            changeCount++;
+
+            return `module.exports = require('${importPath}');`;
+        });
+
+        if (changeCount > 0) {
+            fs.writeFileSync(filePath, newContent);
+            console.log(`re-export is converted in ${filePath}`);
+
+        } else {
+            console.log(`esm module is not found in ${filePath}`);
+        }
+
         return;
     }
 
@@ -83,25 +96,19 @@ function replaceExports(filePath, rootPath = './') {
         return `module.exports.${name} = require('./${path.join(rootPath, importPath)}');`;
     });
 
-    if (rootPath != './') {
-        console.log(newContent);
-        // this mean that file might be have been convered
-        // update the path's accodring rootPath
-        newContent = newContent.replace(EXPORT_CJS_REG, function(match, name, importPath) {
-            console.log(match);
-            changeCount++;
-            const importFullPath = path.join(rootPath, importPath);
-            return `module.exports.${name} = require('./${importFullPath}');`;
-        });
-    }
-
     newContent = newContent.replace(EXPORT_ALL_REG, function(match, importPath) {
         changeCount++;
         const importFullPath = path.join(path.dirname(filePath), importPath);
         const [importContent, _] = replaceExports(importFullPath, path.dirname(path.join(rootPath, importPath)));
 
         return importContent;
+    });
 
+    newContent = newContent.replace(EXPORT_DEFAULT_DEFAULT_REG, function(match, importPath) {
+        changeCount++;
+        const importFullPath = path.join(path.dirname(filePath), importPath);
+
+        return `module.exports = require('./${importFullPath}');`;
     });
 
     return [newContent, changeCount];
@@ -123,17 +130,19 @@ function fixIndexFile(filePath) {
 
 function readDir(dirPath) {
     const list = fs.readdirSync(dirPath, {withFileTypes: true});
-    list.forEach(function(dir) {
+    const files = list.filter((item) => item.isFile() && item.name.endsWith('.js'));
+    const dirs = list.filter((item) => item.isDirectory());
+    files.forEach(function(dir) {
         const itemPath = path.join(dirPath, dir.name);
-        if (dir.isFile() && dir.name.endsWith('.js')) {
-            if (dir.name == 'index.js') {
-                fixIndexFile(itemPath);
-            } else {
-                fixFile(itemPath);
-            }
-        } else if (dir.isDirectory()) {
-            readDir(itemPath);
+        if (dir.name == 'index.js') {
+            fixIndexFile(itemPath);
+        } else {
+            fixFile(itemPath);
         }
+    });
+    dirs.forEach(function(dir) {
+        const itemPath = path.join(dirPath, dir.name);
+        readDir(itemPath);
     });
 }
 

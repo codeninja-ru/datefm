@@ -1,7 +1,6 @@
 clean:
-	rm package-lock.json
+	rm -f package-lock.json
 	rm -rf node_modules/
-
 
 pkg := $(wildcard ../../udate*.tgz)
 

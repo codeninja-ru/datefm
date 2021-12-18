@@ -2,7 +2,8 @@
 /**
  * fixes exports
  * Node doesn't allow direcotry import/export like "export default from './dir'"
- * TypeScript doesn't translate exports for us and Microsoft doesn't want to fix this https://github.com/microsoft/TypeScript/issues/16577#issuecomment-703190339
+ * TypeScript doesn't translate exports for us and Microsoft doesn't want to fix this
+ * @see https://github.com/microsoft/TypeScript/issues/16577#issuecomment-703190339
  * if ./dir/index.ts and ./dir/index.js won't work, we have to make the fix after the translation
  *
  * in short the script finds all the exports and add "index.js" to the end of each of them
@@ -20,16 +21,17 @@ const ESM_DIR = path.join(__dirname, '../build/esm/');
 const CJS_DIR = path.join(__dirname, '../build/cjs/');
 
 const EXPORT_REGX = /(export .+? from ')(.+?)(';)/g;
+const IMPORT_REGX = /import (.+?) from '(.+?)';/g;
 
 function fixFile(filePath) {
     const content = fs.readFileSync(filePath);
     let changeCount = 0;
-    const newContent = content.toString().replace(EXPORT_REGX, function(match, p1, p2, p3, offset, string) {
+    let newContent = content.toString().replace(EXPORT_REGX, function(match, p1, p2, p3, offset, string) {
         const matchPath = path.join(path.dirname(filePath), p2);
         if (fs.existsSync(matchPath)) {
             if (fs.lstatSync(matchPath).isDirectory()) {
                 changeCount++;
-                return p1 + path.join(p2, 'index.js') + p3; //TODO check if the file exists
+                return p1 + './' + path.join(p2, 'index.js') + p3; //TODO check if the file exists
             } else {
                 return match;
             }
@@ -39,6 +41,15 @@ function fixFile(filePath) {
         } else {
             console.warn(`file ${p2} doesn't exist in ${filePath}`);
             return match;
+        }
+    });
+
+    newContent = newContent.replace(IMPORT_REGX, function(match, name, importPath) {
+        if (importPath.endsWith('.js') && importPath.indexOf('./') !== 0) {
+            return match;
+        } else {
+            changeCount++;
+            return `import ${name} from './${importPath}.js';`;
         }
     });
 

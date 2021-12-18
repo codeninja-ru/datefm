@@ -3,6 +3,8 @@
  * generates index.ts for each folder and sub-folders
  * */
 
+// TODO Import testing. I need somekind of test generator for testing of imports.
+
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
