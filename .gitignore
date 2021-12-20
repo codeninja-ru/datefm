@@ -2,6 +2,7 @@
 build/
 node_modules/
 coverage/
-*.tgz
+udate-*.tgz
 *.swp
 test/*/package-lock.json
+test/webpack/dist
