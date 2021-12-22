@@ -32,3 +32,5 @@ pack: gen build package test
 	npm pack ./build
 	make -C ./test/node_cjs/ test
 	make -C ./test/node_esm/ test
+	make -C ./test/webpack/ test
+	make -C ./test/rollup/ test

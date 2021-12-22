@@ -1,0 +1,20 @@
+{
+  "name": "udate-test-rollup",
+  "version": "1.0.0",
+  "description": "test for rollup",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vitaliy Mayorov",
+  "license": "ISC",
+  "dependencies": {
+    "rollup": "^2.61.1",
+    "udate": "file:../../udate-0.0.0.tgz"
+  },
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^13.1.1",
+    "rollup-plugin-terser": "^7.0.2"
+  }
+}

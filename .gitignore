@@ -6,3 +6,4 @@ udate-*.tgz
 *.swp
 test/*/package-lock.json
 test/webpack/dist
+test/rollup/dist
