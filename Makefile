@@ -5,6 +5,11 @@ SHELL=/bin/bash
 clean:
 	rm -rf ./build
 	rm -rf ./coverage
+	make -C ./test/node_cjs/ clean
+	make -C ./test/node_esm/ clean
+	make -C ./test/webpack/ clean
+	make -C ./test/rollup/ clean
+	make -C ./test/parcel/ clean
 
 build: clean
 	./node_modules/typescript/bin/tsc --project tsconfig.json
