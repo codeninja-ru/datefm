@@ -34,3 +34,4 @@ pack: gen build package test
 	make -C ./test/node_esm/ test
 	make -C ./test/webpack/ test
 	make -C ./test/rollup/ test
+	make -C ./test/parcel/ test

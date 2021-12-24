@@ -1,0 +1,15 @@
+{
+  "name": "udate-test-parcel",
+  "version": "1.0.0",
+  "description": "test for parcel",
+  "private": true,
+  "source": "src/index.html",
+  "author": "Vitaliy Mayorov",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.0.1"
+  },
+  "dependencies": {
+    "udate": "file:../../udate-0.0.0.tgz"
+  }
+}

@@ -1,9 +1,9 @@
 *.*~
+.parcel-cache
 build/
 node_modules/
 coverage/
 udate-*.tgz
 *.swp
 test/*/package-lock.json
-test/webpack/dist
-test/rollup/dist
+test/*/dist
