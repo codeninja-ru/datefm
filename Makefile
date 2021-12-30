@@ -40,3 +40,8 @@ pack: gen build package test
 	make -C ./test/webpack/ test
 	make -C ./test/rollup/ test
 	make -C ./test/parcel/ test
+
+typedoc := ./node_modules/typedoc/bin/typedoc
+
+doc:
+	$(typedoc) --out dist/docs ./src
