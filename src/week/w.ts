@@ -1,6 +1,7 @@
 const MS_IN_DAY = 86400000;
 /**
  * ISO-8601 week number of year
+ * @category week
  * @see https://en.wikipedia.org/wiki/ISO_week_date#Algorithms
  * @example 1, 2.. 53
  * */

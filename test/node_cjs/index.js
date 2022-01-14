@@ -4,8 +4,7 @@
 })();
 
 (function() {
-    const { format } = require("udate");
-
+    const format = require("udate/format");
     const dd = require("udate/day/dd");
     const MM = require("udate/month/mm_");
     const yyyy = require("udate/year/yyyy");

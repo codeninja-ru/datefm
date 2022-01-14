@@ -1,5 +1,6 @@
 /**
  * Number of month starting from 01 (leading zero)
+ * @category month
  */
 export default function MM(date: Date) : string {
     var mt = date.getMonth() + 1;

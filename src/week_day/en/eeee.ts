@@ -4,7 +4,14 @@ const DAYS_OF_WEEK = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'F
 /**
  * Full day of week. Format style
  * @lang English
- * @example Sunday, Monday, Tuesday, Wednesday...
+ * @category week_day
+ * @returns Sunday, Monday, Tuesday, Wednesday...
+ * @example ```javascript
+ * import { format } from 'udate';
+ * import eeee from 'udate/week_day/en/eeee';
+ *
+ * console.log(format`The day of the week is ${eeee}!`(new Date()));
+ * ```
  * */
 export default function eeee(date: Date) : typeof DAYS_OF_WEEK[number] {
     return DAYS_OF_WEEK[date.getDay()];

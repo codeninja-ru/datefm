@@ -1,5 +1,6 @@
 /**
  * Day of month (without leading zero)
+ * @category day
  */
 export default function D(date: Date) : string {
     return date.getDate() + '';

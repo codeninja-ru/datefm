@@ -1,5 +1,6 @@
 /**
  * Milliseconds; 3 digits, leading zero
+ * @category millisecond
  * */
 export default function SSS(date: Date) : string {
     var st = date.getMilliseconds() + '';

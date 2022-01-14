@@ -4,7 +4,14 @@ const DAYS_OF_WEEK = ['Вск', 'Пон', 'Вт', 'Ср', 'Чт', 'Птн', 'С�
 /**
  * Abbreviated day of week. Format style
  * @lang Russian
- * @example Вск, Пон, Вт, Ср...
+ * @category week_day
+ * @returns Вск, Пон, Вт, Ср...
+ * @example ```javascript
+ * import { format } from 'udate';
+ * import eee from 'udate/week_day/ru/eee';
+ *
+ * console.log(format`The day of the week is ${eee}!`(new Date()));
+ * ```
  * */
 export default function eee(date: Date) : typeof DAYS_OF_WEEK[number] {
     return DAYS_OF_WEEK[date.getDay()];

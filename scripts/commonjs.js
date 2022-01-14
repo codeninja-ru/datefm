@@ -16,11 +16,11 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const TARGET_DIR = path.join(__dirname, '../build/cjs/');
-const FUNC_NAME_REG = /export default function (.+?)\(/;
-const IMPORT_REG = /import (.+?) from '(.+?)';/g;
-const EXPORT_ALL_REG = /export \* from '(.+?)';/g;
-const EXPORT_DEFAULT_REG = /export \{ default as (.+?) \} from '(.+?)';/g;
-const EXPORT_DEFAULT_DEFAULT_REG = /export \{ default \} from '(.+?)';/g;
+const FUNC_NAME_REG = /^export default function (.+?)\(/m;
+const IMPORT_REG = /^import (.+?) from '(.+?)';/gm;
+const EXPORT_ALL_REG = /^export \* from '(.+?)';/gm;
+const EXPORT_DEFAULT_REG = /^export \{ default as (.+?) \} from '(.+?)';/gm;
+const EXPORT_DEFAULT_DEFAULT_REG = /^export \{ default \} from '(.+?)';/gm;
 
 function parseFuncName(content) {
     const match = content.match(FUNC_NAME_REG);

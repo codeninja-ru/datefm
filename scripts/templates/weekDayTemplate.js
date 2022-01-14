@@ -14,7 +14,14 @@ const DAYS_OF_WEEK = ${array.toJsArray()} as const;
 /**
  * ${desc}
  * @lang ${lang.name}
- * @example ${array.toExampleDoc()}
+ * @category week_day
+ * @returns ${array.toExampleDoc()}
+ * @example \`\`\`javascript
+ * import { format } from 'udate';
+ * import ${fileName.name} from 'udate/week_day/${lang}/${fileName.importName()}';
+ *
+ * console.log(format\`The day of the week is \$\{${fileName.name}\}!\`(new Date()));
+ * \`\`\`
  * */
 export default function ${fileName.name}(date: Date) : typeof DAYS_OF_WEEK[number] {
     return DAYS_OF_WEEK[date.getDay()];

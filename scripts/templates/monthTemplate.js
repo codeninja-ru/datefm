@@ -8,16 +8,24 @@ export class MonthTemplate {
     source(fileName, vars) {
         const { array, lang, desc } = vars;
 
+        const arrayName = `${lang.const}_${fileName.name}_MONTHS`;
         return `// auto-generated, DO NOT EDIT, see scripts/${path.basename(__filename)}
-const MONTHS = ${array.toJsArray()} as const;
+const ${arrayName} = ${array.toJsArray()} as const;
 
 /**
  * ${desc}
  * @lang ${lang.name}
- * @example ${array.toExampleDoc()}
+ * @category month
+ * @returns ${array.toExampleDoc()}
+ * @example \`\`\`javascript
+ * import { format } from 'udate';
+ * import ${fileName.name} from 'udate/month/${lang}/${fileName.importName()}';
+ *
+ * console.log(format\`The current month is \$\{${fileName.name}\}!\`(new Date()));
+ * \`\`\`
  * */
-export default function ${fileName.name}(date: Date) : typeof MONTHS[number] {
-    return MONTHS[date.getMonth()];
+export default function ${fileName.name}(date: Date) : typeof ${arrayName}[number] {
+    return ${arrayName}[date.getMonth()];
 }
 `;
     }

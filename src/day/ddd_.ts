@@ -2,6 +2,7 @@ import D from './d_';
 
 /**
  * Day of year with 3 leading zeros, 001 - 365/366
+ * @category day
  */
 export default function DDD(date: Date) : string {
     const d = D(date);

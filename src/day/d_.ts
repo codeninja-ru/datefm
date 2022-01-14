@@ -2,6 +2,7 @@ const MS_IN_DAY = 86400000;
 
 /**
  * Day of year 1 - 365/366
+ * @category day
  */
 export default function D(date: Date) : string {
     var d = new Date(date.getFullYear(), 0);

@@ -12,6 +12,10 @@ export class Lang {
         return LANGS[this.code];
     }
 
+    get const() {
+        return this.code.toUpperCase();
+    }
+
     toString() {
         return this.code;
     }
