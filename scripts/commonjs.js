@@ -115,7 +115,6 @@ function replaceExports(filePath, rootPath = './') {
 }
 
 function fixIndexFile(filePath) {
-
     // it's not optimal since it fixes files that are going to be fixed on the next iteration
     // and it's error prone since the files might be have fixed before
     // for now we can ignore these problems
@@ -124,7 +123,6 @@ function fixIndexFile(filePath) {
     if (changeCount > 0) {
         fs.writeFileSync(filePath, newContent);
         console.log(`exports have been converted in ${filePath}, count = ${changeCount}`);
-
     }
 }
 
