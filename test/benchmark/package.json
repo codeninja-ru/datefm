@@ -1,0 +1,19 @@
+{
+  "name": "udate-benchmark",
+  "version": "1.0.0",
+  "description": "benchmark tests for udate",
+  "private": true,
+  "main": "benchmark.js",
+  "scripts": {
+    "test": "node benchmark.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "benchmark": "^2.1.4",
+    "date-fns": "^2.28.0",
+    "dayjs": "^1.10.7",
+    "moment": "^2.29.1",
+    "udate": "file:../../udate-0.0.0.tgz"
+  }
+}
