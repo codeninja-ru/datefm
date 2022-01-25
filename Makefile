@@ -40,3 +40,6 @@ pack: gen build package test
 	make -C ./test/webpack/ test
 	make -C ./test/rollup/ test
 	make -C ./test/parcel/ test
+
+benchmark:
+	make -C ./test/benchmark/ test
